@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseDatabase
 
 class ViewController: UIViewController {
+    var ref: DatabaseReference!
 
     @IBOutlet weak var usernameFieldOutlet: UITextField!
     
@@ -16,6 +19,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         // Do any additional setup after loading the view.
     }
 
