@@ -6,16 +6,29 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseDatabase
 
 class ViewController2: UIViewController {
 
+    
+    @IBOutlet weak var userNameOutlet: UITextField!
+    
+    @IBOutlet weak var passwordOutlet: UITextField!
+    
+    
+    
+    var ref: DatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ref = Database.database().reference()
         // Do any additional setup after loading the view.
     }
     
-
+    
+    @IBAction func createAction(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
