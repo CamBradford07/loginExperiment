@@ -28,6 +28,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add New Account"/>
+                                <connections>
+                                    <action selector="newAccountAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="szq-gV-sGY"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J1U-xK-dxw">
                                 <rect key="frame" x="65" y="331" width="265" height="34"/>
@@ -46,6 +49,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Submit"/>
+                                <connections>
+                                    <action selector="submitAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="83p-67-pGa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -53,6 +59,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ohw-px-YvA"/>
                     <connections>
+                        <outlet property="passwordFieldOutlet" destination="8wt-Nf-cgB" id="ndg-S6-RLj"/>
+                        <outlet property="usernameFieldOutlet" destination="J1U-xK-dxw" id="Fw4-b8-0iJ"/>
                         <segue destination="ey3-gb-YlP" kind="show" identifier="loginSuccess" id="1oV-Ux-UzP"/>
                         <segue destination="KYG-VU-sk5" kind="show" identifier="newAccount" id="8Vb-oC-Z8d"/>
                     </connections>
@@ -61,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="973.28244274809151" y="-2.1126760563380285"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller2-->
         <scene sceneID="OLg-ZR-hSs">
             <objects>
-                <viewController id="KYG-VU-sk5" sceneMemberID="viewController">
+                <viewController id="KYG-VU-sk5" customClass="ViewController2" customModule="loginExperiment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hVs-e2-cCi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
