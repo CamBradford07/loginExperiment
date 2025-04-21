@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         
         if userFound && userIndex != -1{
             if enteredPassword == passwords[userIndex]{
-                performSegue(withIdentifier: "success", sender: self)
+                performSegue(withIdentifier: "loginSuccess", sender: self)
             }
         }
     }
