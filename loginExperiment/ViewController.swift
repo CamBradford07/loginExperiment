@@ -10,6 +10,8 @@ import FirebaseCore
 import FirebaseFirestore
 class AppData{
     static var ref: DocumentReference!
+    static var usernames = [String]()
+    static var passwords = [String]()
 }
 
 class ViewController: UIViewController {
@@ -17,8 +19,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var passwordFieldOutlet: UITextField!
         
-    var usernames = [String]()
-    var passwords = [String]()
     
     
     override func viewDidLoad() {
@@ -35,18 +35,16 @@ class ViewController: UIViewController {
                   return
                 }
             
-            self.usernames.removeAll()
-            self.passwords.removeAll()
+            AppData.usernames.removeAll()
+            AppData.passwords.removeAll()
             
             for key in data.keys{
                     let dataArray = data[key] as! [String : Any]
                     let uncodedAccount = Example(dict: dataArray)
-                    self.usernames.append(uncodedAccount.Username)
-                    self.passwords.append(uncodedAccount.Password)
+                    AppData.usernames.append(uncodedAccount.Username)
+                    AppData.passwords.append(uncodedAccount.Password)
             }
             
-            print(self.usernames)
-            print(self.passwords)
             
               }
         
@@ -59,16 +57,16 @@ class ViewController: UIViewController {
         
         var userFound = false
         var userIndex = -1
-        for username in usernames{
+        for username in AppData.usernames{
             if enteredUsername == username{
                 userFound = true
-                userIndex = usernames.firstIndex(of: enteredUsername) ?? -1
+                userIndex = AppData.usernames.firstIndex(of: enteredUsername) ?? -1
                 break
             }
         }
         
         if userFound && userIndex != -1{
-            if enteredPassword == passwords[userIndex]{
+            if enteredPassword == AppData.passwords[userIndex]{
                 performSegue(withIdentifier: "loginSuccess", sender: self)
             }
         }
