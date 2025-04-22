@@ -7,7 +7,7 @@
 
 import UIKit
 import FirebaseCore
-import FirebaseDatabase
+import FirebaseFirestore
 
 class ViewController2: UIViewController {
 
@@ -16,34 +16,19 @@ class ViewController2: UIViewController {
     
     @IBOutlet weak var passwordOutlet: UITextField!
     
-    override func viewDidLoad() {
+    
+        override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
     
     
     @IBAction func createAction(_ sender: Any) {
-        let enteredUsername = userNameOutlet.text!
-        let enteredPassword = passwordOutlet.text!
+        var username = userNameOutlet.text!
+        var password = passwordOutlet.text!
         
-        var userFound = false
-        for username in AppData.usernames{
-            if enteredUsername.lowercased() == username.lowercased(){
-                userFound = true
-                break
-            }
-        }
-        
-        if !userFound{
-            let newUser = Example(dict: [enteredUsername:enteredPassword])
-            
-//            AppData.ref.updateData([newUser.Password:newUser.Username])
-            
-            print("wow! you made an account!")
-        }else{
-            print("there's already an account with that name make something new")
-        }
+        var newPerson = Example(Password: password, Username: username)
+        newPerson.saveToFirestore(docRef: AppData.ref)
     }
     
     /*

@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
-struct Example {
+
+class Example {
     var Password : String!
     var Username : String!
     
@@ -21,4 +23,16 @@ struct Example {
         }
         else {Username = ""}
     }
+    
+    init(Password: String, Username: String){
+        self.Password = Password
+        self.Username = Username
+    }
+    
+    func saveToFirestore(docRef: DocumentReference){
+        let uploadableDict = ["Username" : Username, "Password" : Password] as! [String : Any]
+        let finishedDict = [Username : uploadableDict] as! [String : Any]
+        docRef.setData(finishedDict, merge: true)
+    }
+    
 }
