@@ -26,9 +26,21 @@ class ViewController2: UIViewController {
     @IBAction func createAction(_ sender: Any) {
         var username = userNameOutlet.text!
         var password = passwordOutlet.text!
+        var userFound = false
+        for usernameHi in AppData.usernames{
+            if username.lowercased() == usernameHi.lowercased(){
+                userFound = true
+                break
+            }
+        }
         
-        var newPerson = Example(Password: password, Username: username)
-        newPerson.saveToFirestore(docRef: AppData.ref)
+        if (!userFound){
+            var newPerson = Example(Password: password, Username: username)
+            newPerson.saveToFirestore(docRef: AppData.ref)
+        }else{
+            print("User has been already added.")
+        }
+        
     }
     
     /*
